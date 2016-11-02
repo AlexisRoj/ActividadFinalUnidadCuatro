@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Actividad Final Unidad Cuatro</string>
+
+    <array name="imgMenu">
+        <item>@drawable/circulo</item>
+        <item>@drawable/ovalo</item>
+        <item>@drawable/cuadrado</item>
+        <item>@drawable/rectangulo</item>
+        <item>@drawable/libre</item>
+    </array>
+
+    <string-array name="titulos">
+        <item>Estilo Circular</item>
+        <item>Estilo Ovalado</item>
+        <item>Estilo Cuadrado</item>
+        <item>Estilo Rectangular</item>
+        <item>Estilo Libre</item>
+    </string-array>
+
+    <string-array name="descripcion">
+        <item>Genera formas circulares, que son mostrados en pantalla</item>
+        <item>Genera formas ovaladas, que son mostrados en pantalla</item>
+        <item>Genera formas cuadradas, que son mostrados en pantalla</item>
+        <item>Genera formas rectangulares, que son mostrados en pantalla</item>
+        <item>Genera formas estilo libre, que son mostrados en pantalla</item>
+    </string-array>
+
+
+</resources>

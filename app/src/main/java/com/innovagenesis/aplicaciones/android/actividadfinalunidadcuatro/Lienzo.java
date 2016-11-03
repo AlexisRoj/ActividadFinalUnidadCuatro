@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 /*****************************************************/
 /** CLASE LIENZO ENCARGADA DE ALBERGAR LOS DIBUJOS  **/
@@ -24,11 +25,17 @@ public class Lienzo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lienzo);
 
+        /** Trae el id del RecycleView*/
         Bundle idSeleccion = getIntent().getExtras();
         id = idSeleccion.getInt("idSeleccion");
 
+        /** Cambia el titulo de la barra*/
         String[] titulo = getResources().getStringArray(R.array.formas);
         this.setTitle(titulo[id]);
+
+        /** Envia mensaje de ayuda, para realizar accion en pantalla*/
+        String [] ayudaForma = getResources().getStringArray(R.array.ayudaForma);
+        Toast.makeText(this,ayudaForma[id], Toast.LENGTH_SHORT).show();
 
         /**Se trae el id desde el RecycleView y se lleva al canvas por el contructor*/
         LienzoCanvas lienzoCanvas = new LienzoCanvas(this, id);
@@ -38,12 +45,15 @@ public class Lienzo extends AppCompatActivity {
 
 /*****************************************************/
 /** CLASE CANVAS ENCARGADA DE GESTIONAR LOS DIBUJOS **/
+
 /*****************************************************/
 
 class LienzoCanvas extends View {
 
     /** Lienzo de trabajo del Canvas*/
     int id;
+    /** Coordenadas de ejes x y y, se declaran inferiores a 100, para evitar dos formas en
+     * el primer touch*/
     float ejeX = -100;
     float ejeY = -100;
 
@@ -65,13 +75,7 @@ class LienzoCanvas extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-
-        /** Array de recursos con los nombres de las formas*/
-        //String[] formas = getContext().getResources().getStringArray(R.array.formas);
-        //Toast.makeText(getContext(), formas[id], Toast.LENGTH_SHORT).show();
-
         paint.setColor(Color.WHITE);
-
         paint.setStyle(Paint.Style.FILL);
         canvas.drawPaint(paint);
         /** Al color con el que se va a pintar se le asigna el color de la region*/
@@ -98,7 +102,7 @@ class LienzoCanvas extends View {
                 path.addRect(ejeX, ejeY, 60 + ejeX, 100 + ejeY, Path.Direction.CW);
                 break;
             case 4:
-                /** Estilo libre */
+                /** Estilo libre, se utiliza  un oval porque es mas divertido usarlo */
                 path.addOval(ejeX, ejeY, 20 + ejeX, 20 + ejeY, Path.Direction.CW);
                 break;
         }
@@ -107,18 +111,20 @@ class LienzoCanvas extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
-        if (id == 4){
+        if (id == 4) {
+            /** Funciona de acuerdo a la seleccion del menu principal*/
             if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                /** Crea el el trazo de la liena*/
                 ejeX = event.getX();
                 ejeY = event.getY();
             }
-        }else {
+        } else {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                /** Imprime figuras en pantalla, donde realiza el touch*/
                 ejeX = event.getX();
                 ejeY = event.getY();
             }
         }
-
         invalidate();
         return true;
     }

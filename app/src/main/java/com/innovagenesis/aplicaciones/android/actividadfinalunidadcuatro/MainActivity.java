@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**Instancia el recycleView y sus elementos*/
         MenuAdapters adapters = new MenuAdapters(this);
 
         recyclerView = (RecyclerView)findViewById(R.id.recycleView);

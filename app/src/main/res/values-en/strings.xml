@@ -33,4 +33,18 @@
         <item>Selecionada shape: Freestyle</item>
     </string-array>
 
+    <string-array name="ayudaForma">
+        <item>Touch the screen to draw circles</item>
+        <item>Touch the screen to draw ovals</item>
+        <item>Touch the patanlla to draw pictures</item>
+        <item>Touch the patanlla to draw rectangles</item>
+        <item>Touch and make the way you want</item>
+    </string-array>
+
+
+
+
+
+
+
 </resources>

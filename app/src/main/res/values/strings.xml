@@ -33,5 +33,13 @@
         <item>Forma selecionada: Estilo Libre</item>
     </string-array>
 
+    <string-array name="ayudaForma">
+        <item>Toca la patanlla para dibujar circulos</item>
+        <item>Toca la patanlla para dibujar ovalos</item>
+        <item>Toca la patanlla para dibujar cuadros</item>
+        <item>Toca la patanlla para dibujar rectangulos</item>
+        <item>Toca y crea la forma que desee</item>
+    </string-array>
+
 
 </resources>

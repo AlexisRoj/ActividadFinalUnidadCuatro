@@ -22,7 +22,9 @@ public class MenuAdapters extends RecyclerView.Adapter<MenuHolder> {
     private Context context;
     private LayoutInflater inflater;
 
-    /** Variables encargadas de recibir los array*/
+    /**
+     * Variables encargadas de recibir los array
+     */
 
     private String[] titulos;
     private String[] descripciones;
@@ -41,7 +43,6 @@ public class MenuAdapters extends RecyclerView.Adapter<MenuHolder> {
 
     @Override
     public MenuHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = inflater.inflate(R.layout.item_menu, parent, false);
         return new MenuHolder(view);
 
@@ -64,13 +65,10 @@ public class MenuAdapters extends RecyclerView.Adapter<MenuHolder> {
             MenuHolder recycleViewHolder = (MenuHolder) v.getTag();
             int position = recycleViewHolder.getAdapterPosition();
 
-
-            /** Ejecuta el lienzo*/
+            /** Ejecuta el lienzo y envia el elemento selecionado*/
             Intent intent = new Intent(context, Lienzo.class);
-            intent.putExtra(idSeleccion,position);
+            intent.putExtra(idSeleccion, position);
             context.startActivity(intent);
-
-          //  Toast.makeText(context,"La posicion es : " + position,Toast.LENGTH_SHORT).show();
         }
     };
 

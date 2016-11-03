@@ -4,11 +4,12 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 
 /*****************************************************/
 /** CLASE LIENZO ENCARGADA DE ALBERGAR LOS DIBUJOS  **/
@@ -17,6 +18,7 @@ import android.widget.Toast;
 public class Lienzo extends AppCompatActivity {
 
     int id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +44,13 @@ class LienzoCanvas extends View {
 
     /** Lienzo de trabajo del Canvas*/
     int id;
+    float ejeX = -100;
+    float ejeY = -100;
+
+
+    /** Inicializacion del lienzo*/
+    Path path = new Path();
+    Paint paint = new Paint();
 
     public LienzoCanvas(Context context) {
         super(context);
@@ -56,12 +65,11 @@ class LienzoCanvas extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int ejeX = 0, ejeY = 0;
-        /** Array de recursos con los nombres de las formas*/
-        String[] formas = getContext().getResources().getStringArray(R.array.formas);
 
-        /** Inicializacion del lienzo*/
-        Paint paint = new Paint();
+        /** Array de recursos con los nombres de las formas*/
+        //String[] formas = getContext().getResources().getStringArray(R.array.formas);
+        //Toast.makeText(getContext(), formas[id], Toast.LENGTH_SHORT).show();
+
         paint.setColor(Color.WHITE);
 
         paint.setStyle(Paint.Style.FILL);
@@ -69,32 +77,50 @@ class LienzoCanvas extends View {
         /** Al color con el que se va a pintar se le asigna el color de la region*/
         paint.setColor(ContextCompat.getColor(getContext(), R.color.colorPrimaryDark));
 
-        ejeX = 150;
-        ejeY = 300;
+
+        canvas.drawPath(path, paint);
 
         switch (id) {
-
             case 0:
                 /** Circulo */
-                canvas.drawOval(ejeX, ejeY, 200 + ejeX, 200 + ejeY, paint);
+                path.addOval(ejeX, ejeY, 80 + ejeX, 80 + ejeY, Path.Direction.CW);
                 break;
             case 1:
                 /** Ovalo */
-                canvas.drawOval(ejeX, ejeY, 200 + ejeX, 150 + ejeY, paint);
+                path.addOval(ejeX, ejeY, 60 + ejeX, 100 + ejeY, Path.Direction.CW);
                 break;
             case 2:
                 /** Cuadrado */
-                canvas.drawRect(ejeX, ejeY, 200 + ejeX, 200 + ejeY, paint);
+                path.addRect(ejeX, ejeY, 80 + ejeX, 80 + ejeY, Path.Direction.CW);
                 break;
             case 3:
                 /** Rectangulo */
-                canvas.drawRect(ejeX, ejeY, 200 + ejeX, 150 + ejeY, paint);
+                path.addRect(ejeX, ejeY, 60 + ejeX, 100 + ejeY, Path.Direction.CW);
                 break;
             case 4:
-                /** Libre */
+                /** Estilo libre */
+                path.addOval(ejeX, ejeY, 20 + ejeX, 20 + ejeY, Path.Direction.CW);
                 break;
         }
-
-        Toast.makeText(getContext(), formas[id], Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if (id == 4){
+            if (event.getAction() == MotionEvent.ACTION_MOVE) {
+                ejeX = event.getX();
+                ejeY = event.getY();
+            }
+        }else {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                ejeX = event.getX();
+                ejeY = event.getY();
+            }
+        }
+
+        invalidate();
+        return true;
+    }
+
 }

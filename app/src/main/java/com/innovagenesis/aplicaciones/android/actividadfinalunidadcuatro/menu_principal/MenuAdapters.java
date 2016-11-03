@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.innovagenesis.aplicaciones.android.actividadfinalunidadcuatro.Lienzo;
 import com.innovagenesis.aplicaciones.android.actividadfinalunidadcuatro.R;
@@ -71,7 +70,7 @@ public class MenuAdapters extends RecyclerView.Adapter<MenuHolder> {
             intent.putExtra(idSeleccion,position);
             context.startActivity(intent);
 
-            Toast.makeText(context,"La posicion es : " + position,Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(context,"La posicion es : " + position,Toast.LENGTH_SHORT).show();
         }
     };
 

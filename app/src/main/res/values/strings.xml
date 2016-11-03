@@ -25,5 +25,13 @@
         <item>Genera formas estilo libre, que son mostrados en pantalla</item>
     </string-array>
 
+    <string-array name="formas">
+        <item>Forma selecionada: Circulo</item>
+        <item>Forma selecionada: Ovalo</item>
+        <item>Forma selecionada: Cuadrado</item>
+        <item>Forma selecionada: Rectangulo</item>
+        <item>Forma selecionada: Estilo Libre</item>
+    </string-array>
+
 
 </resources>

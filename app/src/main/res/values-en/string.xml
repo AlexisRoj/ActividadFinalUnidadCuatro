@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Activity Unit Final Four</string>
+
+    <array name="imgMenu">
+        <item>@drawable/circulo</item>
+        <item>@drawable/ovalo</item>
+        <item>@drawable/cuadrado</item>
+        <item>@drawable/rectangulo</item>
+        <item>@drawable/libre</item>
+    </array>
+
+    <string-array name="titulos">
+        <item>Circular style</item>
+        <item>Oval style</item>
+        <item>Square style</item>
+        <item>Rectangular style</item>
+        <item>Free style</item>
+    </string-array>
+
+    <string-array name="descripcion">
+        <item>It generates circular shapes, which are displayed on screen</item>
+        <item>It generates oval shapes, which are displayed on the screen</item>
+        <item>It generates square shapes, which are displayed on screen</item>
+        <item>It generates rectangular shapes, which are displayed on the screen</item>
+        <item>Freestyle generates forms, which are displayed on the screen</item>
+    </string-array>
+
+    <string-array name="formas">
+        <item>Selected Shape: Circle</item>
+        <item>Selected shape: Oval</item>
+        <item>Selected Shape: Square</item>
+        <item>Selecionada Shape: Rectangle</item>
+        <item>Selecionada shape: Freestyle</item>
+    </string-array>
+
+</resources>
